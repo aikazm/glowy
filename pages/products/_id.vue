@@ -22,24 +22,23 @@
               <strike>Rp 60.500</strike>
             </li>
           </ul>
+          <div class="button-inc-dec mt-3">
+            <b-input-group size="sm">
+              <b-input-group-prepend>
+                <b-button>
+                  <font-awesome-icon :icon="['fas', 'minus']" />
+                </b-button>
+              </b-input-group-prepend>
 
-          <!-- <ul class="mt-3">
-            <li>Qty</li>
-            <li>
-              <b-input-group>
-                <b-input-group-prepend>
-                  <b-button>-</b-button>
-                </b-input-group-prepend>
+              <b-form-input class="qty"></b-form-input>
 
-                <b-form-input></b-form-input>
-
-                <b-input-group-append>
-                  <b-button>+</b-button>
-                </b-input-group-append>
-              </b-input-group>
-            </li>
-          </ul>-->
-
+              <b-input-group-append>
+                <b-button>
+                  <font-awesome-icon :icon="['fas', 'plus']" />
+                </b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </div>
           <div class="mt-3">
             <b-tabs content-class="mt-3">
               <b-tab title="Description" active>
@@ -108,5 +107,8 @@ ul {
   color: white;
   margin: 20px;
   padding: 5px;
+}
+.button-inc-dec {
+  width: 100px;
 }
 </style>

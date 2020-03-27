@@ -12,35 +12,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="product in products" :key="product.id">
             <td>
               <figure class="figure">
-                <b-img src="@/assets/nivea-1.jpg" class="thumbnail-product mr-3" />
-                <h6>NIVEA</h6>
-                <figcaption class="figure-caption">Double Eye Make Up Remover</figcaption>
+                <b-img :src="product.img" class="thumbnail-product mr-3" />
+                <h6>{{ product.brand }}</h6>
+                <figcaption class="figure-caption">{{ product.name }}</figcaption>
               </figure>
             </td>
-            <td>Rp 20.000</td>
+            <td>Rp {{product.price}}</td>
             <td>
               <div>
-                <b-input-group size="sm">
-                  <b-input-group-prepend>
-                    <b-button>
-                      <font-awesome-icon :icon="['fas', 'minus']" />
-                    </b-button>
-                  </b-input-group-prepend>
-
-                  <b-form-input class="qty"></b-form-input>
-
-                  <b-input-group-append>
-                    <b-button>
-                      <font-awesome-icon :icon="['fas', 'plus']" />
-                    </b-button>
-                  </b-input-group-append>
-                </b-input-group>
+                <b-form-spinbutton class="btn-inc-dec" v-model="product.qty" min="1" max="100"></b-form-spinbutton>
               </div>
             </td>
-            <td>Rp 20.000</td>
+            <td>{{ total }}</td>
           </tr>
         </tbody>
       </table>
@@ -73,6 +59,38 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      products: [
+        {
+          id: 1,
+          brand: "nivea",
+          img: "@/assets/nivea-1.jpg",
+          name: "Double Eye Make Up Remover",
+          price: 60500,
+          qty: 1
+        },
+        {
+          id: 2,
+          brand: "nivea",
+          img: "@/assets/nivea-2.jpg",
+          name: "Face Care Make Up Starter Serum SPF 33",
+          price: 48750,
+          qty: 1
+        }
+      ],
+      total: 0
+    };
+  },
+  computed: {
+    total: function() {
+      return this.qty * this.price;
+    }
+  }
+};
+</script>
 
 <style>
 .cart {
@@ -82,7 +100,7 @@
   height: 60px;
   float: left;
 }
-.qty {
-  width: 5px;
+.btn-inc-dec {
+  width: 130px;
 }
 </style>
